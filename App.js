@@ -15,8 +15,12 @@ function App() {
     <Provider store={store}>
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Add" component={AddTransaction} />
+        <Stack.Screen name="Home" component={HomeScreen} options={{
+          title: 'My Pocket'
+        }} />
+        <Stack.Screen name="Add" component={AddTransaction} options={{
+          title: 'Add expense'
+        }} />
       </Stack.Navigator>
     </NavigationContainer>
     </Provider>
