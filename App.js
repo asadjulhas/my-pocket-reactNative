@@ -1,20 +1,27 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import HomeScreen from './src/Components/HomeScreen';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+/* components */
+import AddTransaction from './src/Components/AddTransaction';
+/* redux */
+import { Provider } from 'react-redux';
+import store from './src/store';
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello pocket</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Add" component={AddTransaction} />
+      </Stack.Navigator>
+    </NavigationContainer>
+    </Provider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+
